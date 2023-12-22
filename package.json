@@ -1,0 +1,16 @@
+{
+  "name": "mon-me",
+  "version": "1.0.0",
+  "description": "doing the legwork of checking comments / relevant data using cypress.io",
+  "main": "index.js",
+  "author": "Viorel PETCU",
+  "license": "CPPL",
+  "private": true,
+  "scripts": {
+    "art": "cypress run --spec cypress/e2e/0-mine/dev_analytics.cy.js",
+    "cy-all": "yarn art --env i=0 && yarn art --env i=1 && yarn art --env i=2 && yarn art --env i=3 && yarn art --env i=4 && yarn art --env i=5 && yarn art --env i=6 && yarn art --env i=7"
+  },
+  "devDependencies": {
+    "cypress": "^13.6.1"
+  }
+}
