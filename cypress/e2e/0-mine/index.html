@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html>
 
-<heads>
+<head>
     <script data-jib="sed-from-here">
         var json = {
-  "run-date": "2023-12-23T00:40:19.587Z",
+  "run-date": "2023-12-23T22:46:50.564Z",
   "articles": [
     {
       "title": "The \"Censorship Brush\" - GIMP enabled Invoice Redaction",
@@ -54,6 +54,14 @@
         google.charts.load('current', { 'packages': ['bar'] });
         google.charts.setOnLoadCallback(drawChart);
 
+        function truncateTitle(title) {
+            const words = title.split(' ');
+            if (words.length > 4) {
+                return `${words.slice(0, 3).join(' ')} ... ${words[words.length - 1]}`;
+            }
+            return title;
+        }
+
         function drawChart() {
 
             const data = new google.visualization.DataTable();
@@ -62,7 +70,7 @@
             data.addColumn('number', 'Reactions');
 
             json.articles.forEach(article => {
-                data.addRow([article.title, article.commentNo, article.reactionNo]);
+                data.addRow([truncateTitle(article.title), article.commentNo, article.reactionNo]);
             });
 
             const options = {
@@ -73,8 +81,14 @@
                 bars: 'vertical',
                 vAxis: { format: 'decimal' },
                 height: 400,
-                colors: ['#1b9e77', '#7570b3']
+                colors: ['#1b9e77', '#7570b3'],
+                hAxis: {
+                    title: 'Articles',
+                    slantedText: true, // Enable slanting
+                    slantedTextAngle: 45 // Adjust to desired angle
+                }
             };
+
 
             const chart = new google.charts.Bar(document.getElementById('chart_div'));
             chart.draw(data, google.charts.Bar.convertOptions(options));
