@@ -5,6 +5,9 @@ on:
   pull_request:
     branches: [ "main" ]
   workflow_dispatch:
+  schedule:
+    # Runs at minute 0 past every 6th hour
+    - cron: '0 */6 * * *'
 
 jobs:
   build:
