@@ -13,7 +13,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - name: Run a one-line script
+      - name: Install and Run Cypress
         run: | 
           yarn 
           yarn cy-all
@@ -23,5 +23,11 @@ jobs:
         with:
           # Artifact name
           name: chart
-          path: ./cypress/e2e/0-mine/chart.html          
+          path: ./cypress/e2e/0-mine/chart.html
           retention-days: 14
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./cypress/e2e/0-mine/

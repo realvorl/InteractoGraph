@@ -1,7 +1,7 @@
 const fs = require('fs');
 
 const tmplFilePath = 'chart.tmpl';
-const htmlFilePath = 'chart.html';
+const htmlFilePath = 'index.html';
 const jsonFilePath = 'data.json';
 
 // Read HTML and JSON files
