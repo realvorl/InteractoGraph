@@ -1,0 +1,27 @@
+name: CI
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Run a one-line script
+        run: | 
+          yarn 
+          yarn cy-all
+            
+      - name: Upload a Build Artifact
+        uses: actions/upload-artifact@v4.0.0
+        with:
+          # Artifact name
+          name: chart
+          path: ./cypress/e2e/0-mine/chart.html          
+          retention-days: 14
