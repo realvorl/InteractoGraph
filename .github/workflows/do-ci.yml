@@ -19,6 +19,8 @@ jobs:
           git checkout gh-pages
           yarn 
           yarn cy-all
+          git config --global user.email "6973263+realvorl@users.noreply.github.com"
+          git config --global user.name "(Vorl)-Bot"
           git commit -am "chore (ci): update e2e test results $(date +%s)"
           git push
 
