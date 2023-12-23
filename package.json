@@ -7,8 +7,8 @@
   "license": "CPPL",
   "private": true,
   "scripts": {
-    "art": "cypress run --spec cypress/e2e/0-mine/dev_analytics.cy.js",
-    "cy-all": "yarn art --env i=0 && yarn art --env i=1 && yarn art --env i=2 && yarn art --env i=3 && yarn art --env i=4 && yarn art --env i=5 && yarn art --env i=6 && yarn art --env i=7"
+    "update-chart": "cd cypress/e2e/0-mine && node updateHtml.js && cd -",
+    "cy-all": "cypress run --spec cypress/e2e/0-mine/all_in_one.cy.js && yarn update-chart"
   },
   "devDependencies": {
     "cypress": "^13.6.1"

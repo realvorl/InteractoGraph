@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script data-jib="sed-from-here">
+        // JSON_PLACEHOLDER
+    </script>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+        google.charts.load('current', { 'packages': ['bar'] });
+        google.charts.setOnLoadCallback(drawChart);
+
+        function drawChart() {
+
+            const data = new google.visualization.DataTable();
+            data.addColumn('string', 'Article');
+            data.addColumn('number', 'Comments');
+            data.addColumn('number', 'Reactions');
+
+            json.articles.forEach(article => {
+                data.addRow([article.title, article.commentNo, article.reactionNo]);
+            });
+
+            const options = {
+                chart: {
+                    title: 'Article Interactions',
+                    subtitle: 'Comments and Reactions per Article',
+                },
+                bars: 'vertical',
+                vAxis: { format: 'decimal' },
+                height: 400,
+                colors: ['#1b9e77', '#7570b3']
+            };
+
+            const chart = new google.charts.Bar(document.getElementById('chart_div'));
+            chart.draw(data, google.charts.Bar.convertOptions(options));
+
+        }
+    </script>
+</head>
+
+<body>
+    <div id="chart_div"></div>
+</body>
+
+</html>

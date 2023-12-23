@@ -13,7 +13,6 @@ let i = parseInt(Cypress.env('i'));
 const url = TOC[i].url;
 const art = TOC[i].title;
 
-
 function textFromVisible(selector) {
   // Visit the URL
   cy.visit(url);
