@@ -15,15 +15,15 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
-        with:
-          fetch-depth: 0
+        # with:
+        #  fetch-depth: 0
 
       - name: Install and Run Cypress
         run: | 
           git config --global user.email "6973263+realvorl@users.noreply.github.com"
           git config --global user.name "(Vorl)-Bot"
-          git pull
-          git checkout gh-pages
+          # git pull
+          # git checkout gh-pages
           yarn 
           yarn cy-all
           git add .
@@ -34,6 +34,7 @@ jobs:
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_branch: main
           publish_dir: ./cypress/e2e/0-mine/
 
       - name: Upload a Build Artifact
