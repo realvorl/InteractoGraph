@@ -25,7 +25,7 @@ describe('Article Metrics on dev.to', () => {
         // If this is the last article, write the metrics to a file
         if (index === $bodies.length - 1) {
           cy.writeFile('./cypress/e2e/0-mine/data.json', {
-            'run-date': new Date().toISOString(),
+            'dateISO': new Date().toISOString(),
             'articles': articleMetrics
           }, { flag: 'w+' }); // Overwrite if file exists
         }
