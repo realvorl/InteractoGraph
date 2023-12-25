@@ -29,13 +29,15 @@ jobs:
           git add .
           git commit -am "chore (ci): update e2e test results $(date +%s)"
           git push
+          git checkout -b gh-pages
+          git push --set-upstream origin gh-pages --force
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_branch: main
-          publish_dir: ./cypress/e2e/0-mine/
+          publish_branch: gh-pages
+          publish_dir: ./cypress/e2e/0-mine/index.html
 
       - name: Upload a Build Artifact
         uses: actions/upload-artifact@v4.0.0
