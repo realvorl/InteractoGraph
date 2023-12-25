@@ -37,7 +37,7 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_branch: gh-pages
-          publish_dir: ./cypress/e2e/0-mine/index.html
+          publish_dir: ./cypress/e2e/0-mine
 
       - name: Upload a Build Artifact
         uses: actions/upload-artifact@v4.0.0
