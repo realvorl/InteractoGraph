@@ -44,5 +44,5 @@ jobs:
         with:
           # Artifact name
           name: chart
-          path: ./cypress/e2e/0-mine/chart.html
+          path: ./cypress/e2e/0-mine/index.html
           retention-days: 14
