@@ -7,7 +7,7 @@ on:
   workflow_dispatch:
   schedule:
     # Runs at minute 0 past every 6th hour
-    - cron: '0 */6 * * *'
+    - cron: '0 3 * * *'
 
 jobs:
   build:
